@@ -1,0 +1,18 @@
+Global 识别路径
+识别路径 = "F:\按键精灵\江中游插件"
+'dm.SetPath 识别路径
+原路径 = Plugin.ocr.LongOcr(识别路径)'加载路径，为了和大漠插件截图命令相整合所以这里建议使用大漠插件的全局路径，本命令加载一次即可，返回原路径要做全局变量
+TracePrint 原路径
+//下面是识别
+bbb = "bbb.jpg"'可以任意图片名，但要和识别的对应
+Call Plugin.Pic.PrintScreen(354, 38, 412, 60, "F:\按键精灵\江中游插件\bbb.jpg")
+Delay 1000
+s = Plugin.ocr.Ocr("bbb.jpg")'文字识别直接写图片名即可，或是用大漠插件截图的名字，都行
+TracePrint s
+s = Plugin.ocr.Ocr("aaa.png")'文字识别直接写图片名即可，或是用大漠插件截图的名字，都行
+TracePrint s
+s = Plugin.ocr.Ocr("b.JPG")'文字识别直接写图片名即可，或是用大漠插件截图的名字，都行
+TracePrint s
+坐标 = Plugin.ocr.Findstr("出",bbb,0)'
+TracePrint 坐标
+Plugin.ocr.UnOcr 原路径'卸载路径，这也是必须的，可以放到大漠插件释放命令前后均可
